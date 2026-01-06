@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>If You Fell Into a Book…</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+
+  <section id="intro" class="card">
+    <h1>If You Fell Into a Book…</h1>
+    <p class="intro-text">
+      Step through the looking-glass.  
+      Answer instinctively. Logic is optional.
+    </p>
+    <button onclick="startQuiz()">Down the Rabbit Hole →</button>
+  </section>
+
+  <section id="question" class="card hidden">
+    <h2 id="question-text"></h2>
+    <div id="answers"></div>
+  </section>
+
+  <section id="result" class="card hidden"></section>
+
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
