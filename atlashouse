@@ -1,0 +1,232 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f6f2ec;
+  color: #2c2c2c;
+}
+
+.quiz-container {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: #fffdf9;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.intro-text {
+  text-align: center;
+  margin: 16px 0 24px;
+  line-height: 1.5;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #2c2c2c;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.answer-btn {
+  background: #f0ece6;
+  color: #2c2c2c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+let currentQuestion = 0;
+
+const scores = {
+  spade: 0,
+  club: 0,
+  diamond: 0,
+  heart: 0
+};
+
+const questions = [
+  {
+    text: "You open a book and immediately want…",
+    answers: [
+      ["♠️ To follow something unfamiliar", "spade"],
+      ["♣️ To be comforted by the story", "club"],
+      ["♦️ To be surprised or unsettled", "diamond"],
+      ["♥️ To understand how everything fits together", "heart"]
+    ]
+  },
+  {
+    text: "You stop reading when…",
+    answers: [
+      ["♠️ The world stops changing", "spade"],
+      ["♣️ You stop caring about the characters", "club"],
+      ["♦️ The story becomes predictable", "diamond"],
+      ["♥️ The rules stop making sense", "heart"]
+    ]
+  },
+  {
+    text: "Your favorite stories feel like…",
+    answers: [
+      ["♠️ A door you weren’t meant to open", "spade"],
+      ["♣️ A familiar voice calling your name", "club"],
+      ["♦️ A game with missing instructions", "diamond"],
+      ["♥️ A puzzle that slowly reveals itself", "heart"]
+    ]
+  },
+  {
+    text: "In a strange place, you would…",
+    answers: [
+      ["♠️ Keep walking to see where it leads", "spade"],
+      ["♣️ Look for something recognizable", "club"],
+      ["♦️ Do the opposite of what’s expected of you", "diamond"],
+      ["♥️ Observe quietly before acting", "heart"]
+    ]
+  },
+  {
+    text: "You remember a story mostly for…",
+    answers: [
+      ["♠️ The world", "spade"],
+      ["♣️ The characters", "club"],
+      ["♦️ The feelings", "diamond"],
+      ["♥️ The idea", "heart"]
+    ]
+  },
+  {
+    text: "A good story leaves you feeling…",
+    answers: [
+      ["♠️ Curious", "spade"],
+      ["♣️ Comforted", "club"],
+      ["♦️ Challenged", "diamond"],
+      ["♥️ Thoughtful", "heart"]
+    ]
+  }
+];
+
+function startQuiz() {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("question").classList.remove("hidden");
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question-text").textContent = q.text;
+
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+
+  q.answers.forEach(answer => {
+    const btn = document.createElement("button");
+    btn.textContent = answer[0];
+    btn.className = "answer-btn";
+    btn.onclick = () => selectAnswer(answer[1]);
+    answersDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(type) {
+  scores[type]++;
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById("question").classList.add("hidden");
+  const resultDiv = document.getElementById("result");
+  resultDiv.classList.remove("hidden");
+
+  const winner = Object.keys(scores).reduce((a, b) =>
+    scores[a] > scores[b] ? a : b
+  );
+
+  const results = {
+    spade: `
+      <h2>♠️ The Curious Wanderer</h2>
+      <p><em>“It’s no use going back to yesterday…”</em></p>
+      <p>Curiosity before clarity. You are drawn to unfamiliar paths and slow-unfolding worlds.</p>
+    `,
+    club: `
+      <h2>♣️ The Comfort Keeper</h2>
+      <p><em>“I almost wish I hadn’t gone down the rabbit-hole.”</em></p>
+      <p>You seek grounding, emotional connection, and stories that feel like home.</p>
+    `,
+    diamond: `
+      <h2>♦️ The Rule-Breaker</h2>
+      <p><em>“Six impossible things before breakfast.”</em></p>
+      <p>You love disruption, experimentation, and stories that resist explanation.</p>
+    `,
+    heart: `
+      <h2>♥️ The Observer</h2>
+      <p><em>“Who in the world am I?”</em></p>
+      <p>You notice structure, symbolism, and the hidden mechanics of stories.</p>
+    `
+  };
+
+  resultDiv.innerHTML = results[winner];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>If You Fell Into a Book…</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-container">
+
+  <section id="intro" class="card">
+    <h1>If You Fell Into a Book…</h1>
+    <p class="intro-text">
+      Step through the looking-glass.  
+      Answer instinctively. Logic is optional.
+    </p>
+    <button onclick="startQuiz()">Down the Rabbit Hole →</button>
+  </section>
+
+  <section id="question" class="card hidden">
+    <h2 id="question-text"></h2>
+    <div id="answers"></div>
+  </section>
+
+  <section id="result" class="card hidden"></section>
+
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
