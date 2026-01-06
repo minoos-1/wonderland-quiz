@@ -17,14 +17,15 @@ body {
 }
 
 .card {
-  background: #fffdf9;
+  background: #1a1a1a; 
   border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  border: 2px solid #e5d5b3;
-  animation: fadeIn 0.4s ease;
+  margin: 20px auto;
+  max-width: 480px; 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); 
+  border: 2px solid #f6f2ec;
+  color: #f6f2ec; 
 }
-
 .hidden {
   display: none;
 }
@@ -56,16 +57,18 @@ button {
   margin: 10px 0;
   border-radius: 18px;
   font-size: 16px;
-  background: linear-gradient(145deg, #f7f1e0, #ede4ce);
-  border: 1px solid #d6c9a0;
+  background: #333; 
+  border: 1px solid #f6f2ec; 
+  color: #f6f2ec; 
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 button:hover {
+  background: #555; 
   transform: scale(1.03);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
+
 
 .answer-btn {
   background: #f0ece6;
