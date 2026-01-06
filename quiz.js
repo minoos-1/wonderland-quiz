@@ -7,6 +7,7 @@ const scores = {
   heart: 0
 };
 
+
 const questions = [
   {
     text: "You open a book and immediately want…",
@@ -107,37 +108,35 @@ function showResult() {
   );
 
   const results = {
-  spade: `
-    <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
-    <h2>♠️ The Curious Wanderer</h2>
-    <p><em>“If you drink much from a bottle marked ‘poison,’ it is certain to disagree with you sooner or later.”</em></p>
-    <p>Curiosity before clarity. You explore the unfamiliar and delight in stories that slowly reveal their meaning.</p>
-    <p class="result-note">Go get your card at the Atlas House Stand.</p>
-  `,
-  club: `
-    <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
-    <h2>♣️ The Comfort Keeper</h2>
-    <p><em>“And what is the use of a book without pictures or conversation?”</em></p>
-    <p>You find home in stories that feel grounding, warm, and familiar.</p>
-    <p class="result-note">Go get your card at the Atlas House Stand.</p>
-  `,
-  diamond: `
-    <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
-    <h2>♦️ The Rule-Breaker</h2>
-    <p><em>“If I had a world of my own, everything would be nonsense.”</em></p>
-    <p>You love disruption and experimentation, enjoying stories that resist neat rules.</p>
-    <p class="result-note">Go get your card at the Atlas House Stand.</p>
-  `,
-  heart: `
-    <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
-    <h2>♥️ The Observer</h2>
-    <p><em>“It’s no use going back to yesterday, because I was a different person then.”</em></p>
-    <p>You notice what others miss, seeing the patterns, structure, and hidden details of stories.</p>
-    <p class="result-note">Go get your card at the Atlas House Stand.</p>
-  `
-};
+    spade: `
+      <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
+      <h2>♠️ The Curious Wanderer</h2>
+      <p><em>“If you drink much from a bottle marked ‘poison,’ it is certain to disagree with you sooner or later.”</em></p>
+      <p>Curiosity before clarity. You explore the unfamiliar and delight in stories that slowly reveal their meaning.</p>
+      <p class="result-note">Go get your card at the Atlas House Stand.</p>
+    `,
+    club: `
+      <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
+      <h2>♣️ The Comfort Keeper</h2>
+      <p><em>“And what is the use of a book without pictures or conversation?”</em></p>
+      <p>You find home in stories that feel grounding, warm, and familiar.</p>
+      <p class="result-note">Go get your card at the Atlas House Stand.</p>
+    `,
+    diamond: `
+      <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
+      <h2>♦️ The Rule-Breaker</h2>
+      <p><em>“If I had a world of my own, everything would be nonsense.”</em></p>
+      <p>You love disruption and experimentation, enjoying stories that resist neat rules.</p>
+      <p class="result-note">Go get your card at the Atlas House Stand.</p>
+    `,
+    heart: `
+      <p><em>You’ve wandered, wondered, and discovered your reader self… Each answer was a step deeper into the story, and now your Reader Identity Card has been revealed.</em></p>
+      <h2>♥️ The Observer</h2>
+      <p><em>“It’s no use going back to yesterday, because I was a different person then.”</em></p>
+      <p>You notice what others miss, seeing the patterns, structure, and hidden details of stories.</p>
+      <p class="result-note">Go get your card at the Atlas House Stand.</p>
+    `
+  };
 
- resultDiv.innerHTML = results[winner] + `
-  <p><strong>Take your card from the Atlas House Stand and carry your Wonderland adventure with you.</strong></p>
-`;
+  resultDiv.innerHTML = results[winner];
 }
