@@ -17,9 +17,10 @@ body {
 
 .card {
   background: #fffdf9;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border: 2px solid #e5d5b3;
   animation: fadeIn 0.4s ease;
 }
 
@@ -28,7 +29,12 @@ body {
 }
 
 h1, h2 {
+  font-family: 'Cinzel', serif;
   text-align: center;
+}
+p {
+  font-family: 'Georgia', serif;
+  line-height: 1.5;
 }
 
 .intro-text {
@@ -36,21 +42,28 @@ h1, h2 {
   margin: 16px 0 24px;
   line-height: 1.5;
 }
-
+.result-note {
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+  text-align: center;
+  color: #9b5f3c;
+}
 button {
   width: 100%;
-  padding: 14px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 12px;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 18px;
   font-size: 16px;
-  background: #2c2c2c;
-  color: white;
+  background: linear-gradient(145deg, #f7f1e0, #ede4ce);
+  border: 1px solid #d6c9a0;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .answer-btn {
@@ -58,7 +71,12 @@ button:hover {
   color: #2c2c2c;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
+.symbol {
+  display: inline-block;
+  animation: float 2s infinite ease-in-out;
+}
+
