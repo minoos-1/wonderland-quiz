@@ -129,5 +129,7 @@ function showResult() {
     `
   };
 
-  resultDiv.innerHTML = results[winner];
+ resultDiv.innerHTML = results[winner] + `
+  <p><strong>Take your card from the Atlas House Stand and carry your Wonderland adventure with you.</strong></p>
+`;
 }
